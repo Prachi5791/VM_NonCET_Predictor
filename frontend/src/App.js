@@ -6,7 +6,10 @@ function App() {
     courseName: '',
     studentName: '',
     city: '',
-    instituteName: ''
+    searchQuery: '',
+    educationLevel: '',
+    specialization: ''
+
   });
 
   const handleInputChange = (e) => {
@@ -18,9 +21,10 @@ function App() {
   };
 
   const handleSubmit = () => {
-    console.log('Form submitted with data:', formData);
-    alert(`Form submitted!\nCourse: ${formData.courseName}\nStudent: ${formData.studentName}\nCity: ${formData.city}\nInstitute: ${formData.instituteName}`);
-  };
+  console.log('Form submitted with data:', formData);
+  alert(`Form submitted!\nLevel: ${formData.educationLevel}\nStream: ${formData.courseName}\nSpecialization: ${formData.specialization}\nStudent: ${formData.studentName}\nCity: ${formData.city}`);
+};
+
 
   return (
     <div className="app">
@@ -30,10 +34,51 @@ function App() {
       </div>
 
       <div className="container">
+
+      
+      <div className="search-bar">
+  <input
+    type="text"
+    placeholder="Search..."
+    className="text-input"
+    name="searchQuery"
+    value={formData.searchQuery || ''}
+    onChange={handleInputChange}
+  />
+</div>
+
+
+
+    <div className="education-level-group">
+  <label className="label">Select Education Level:</label>
+  <div className="education-level-options">
+    <label>
+      <input
+        type="radio"
+        name="educationLevel"
+        value="Undergraduate"
+        checked={formData.educationLevel === 'Undergraduate'}
+        onChange={handleInputChange}
+      />
+      Undergraduate
+    </label>
+    <label>
+      <input
+        type="radio"
+        name="educationLevel"
+        value="Postgraduate"
+        checked={formData.educationLevel === 'Postgraduate'}
+        onChange={handleInputChange}
+      />
+      Postgraduate
+    </label>
+  </div>
+</div>
+   
         {/* Course Selection */}
         <div className="course-selection">
           <label className="label">
-            Select Admission Process:
+            Select Stream { /*Admission Process*/}:
           </label>
           <select 
             name="courseName"
@@ -41,15 +86,37 @@ function App() {
             onChange={handleInputChange}
             className="select-dropdown course-select"
           >
-            <option value="">Select Course</option>
-            <option value="BDesign">BDesign</option>
+            <option value="">Select Stream</option>
+            { /*<option value="BDesign">BDesign</option>
             <option value="Engineering">Engineering</option>
-            <option value="Medical">Medical</option>
+            <option value="Medical">Medical</option> */}
             <option value="Management">Management</option>
-            <option value="Architecture">Architecture</option>
-            <option value="Pharmacy">Pharmacy</option>
+            <option value="Science">Science</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts</option>
           </select>
         </div>
+
+     {/* Specialization Dropdown */}
+<div className="specialization-group">
+  <label className="label">Select Specialization:</label>
+  <select
+    name="specialization"
+    value={formData.specialization || ''}
+    onChange={handleInputChange}
+    className="select-dropdown"
+  >
+    <option value="">Select Specialization</option>
+    <option value="IT">Information Technology</option>
+    <option value="Mechanical">Mechanical Engineering</option>
+    <option value="Civil">Civil Engineering</option>
+    <option value="Finance">Finance</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Physics">Physics</option>
+    <option value="Psychology">Psychology</option>
+  </select>
+</div>
+
 
         {/* Filter Colleges Section */}
         <div className="filter-section">
@@ -70,53 +137,32 @@ function App() {
             />
           </div>
 
-          {/* City and Institute Name in a row */}
-          <div className="form-row">
-            <div className="form-group">
-              <label className="label">
-                City:
-              </label>
-              <select
-                name="city"
-                value={formData.city}
-                onChange={handleInputChange}
-                className="select-dropdown"
-              >
-                <option value="">All</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Pune">Pune</option>
-                <option value="Nashik">Nashik</option>
-                <option value="Nagpur">Nagpur</option>
-                <option value="Aurangabad">Aurangabad</option>
-                <option value="Kolhapur">Kolhapur</option>
-                <option value="Solapur">Solapur</option>
-                <option value="Amravati">Amravati</option>
-              </select>
-            </div>
+          {/* City Selection */}
+<div className="form-row">
+  <div className="form-group">
+    <label className="label">
+      City:
+    </label>
+    <select
+      name="city"
+      value={formData.city}
+      onChange={handleInputChange}
+      className="select-dropdown"
+    >
+      <option value="">All</option>
+      <option value="Mumbai">Mumbai</option>
+      <option value="Pune">Pune</option>
+      <option value="Nashik">Nashik</option>
+      <option value="Nagpur">Nagpur</option>
+      <option value="Aurangabad">Aurangabad</option>
+      <option value="Kolhapur">Kolhapur</option>
+      <option value="Solapur">Solapur</option>
+      <option value="Amravati">Amravati</option>
+    </select>
+  </div>
+</div> {/* ✅ this closes form-row correctly */}
 
-            <div className="form-group">
-              <label className="label">
-                Institute Name:
-              </label>
-              <select
-                name="instituteName"
-                value={formData.instituteName}
-                onChange={handleInputChange}
-                className="select-dropdown"
-              >
-                <option value="">All</option>
-                <option value="IIT Bombay">IIT Bombay</option>
-                <option value="COEP">COEP</option>
-                <option value="VJTI">VJTI</option>
-                <option value="SPPU">SPPU</option>
-                <option value="Mumbai University">Mumbai University</option>
-                <option value="NIT Nagpur">NIT Nagpur</option>
-                <option value="YCCE">YCCE</option>
-                <option value="Symbiosis">Symbiosis</option>
-              </select>
-            </div>
-          </div>
-
+            
           {/* Submit Button */}
           <div className="submit-section">
             <button
