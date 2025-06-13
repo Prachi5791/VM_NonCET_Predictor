@@ -19,9 +19,9 @@ require('dotenv').config();
 
     for (let row of rows) {
       await pool.execute(insertQuery, [
-        row["College Code"] || null,
-        row["College/Institute"] || null,
-        row["City"] || null,
+        row["Code"] || null,
+        row["College Name"] || null,
+        row["City Name"] || null,
         row["Course"] || null,
       ]);
     }

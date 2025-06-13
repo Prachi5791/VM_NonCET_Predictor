@@ -7,7 +7,7 @@ require('dotenv').config();
 
 (async function importPGData() {
   try {
-    const filePath = Path.join(process.env.FILE_PATH, "all_colleges.xlsx");
+    const filePath = Path.join(process.env.FILE_PATH, "PG.xlsx");
     const workbook = xlsx.readFile(filePath);
     const sheetName = workbook.SheetNames[0]; // Fix here
     const worksheet = workbook.Sheets[sheetName];
