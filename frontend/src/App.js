@@ -9,7 +9,6 @@ function App() {
     searchQuery: '',
     educationLevel: '',
     specialization: ''
-
   });
 
   const handleInputChange = (e) => {
@@ -21,10 +20,11 @@ function App() {
   };
 
   const handleSubmit = () => {
-  console.log('Form submitted with data:', formData);
-  alert(`Form submitted!\nLevel: ${formData.educationLevel}\nStream: ${formData.courseName}\nSpecialization: ${formData.specialization}\nStudent: ${formData.studentName}\nCity: ${formData.city}`);
-};
-
+    console.log('Form submitted with data:', formData);
+    alert(
+      `Form submitted!\nLevel: ${formData.educationLevel}\nStream: ${formData.courseName}\nSpecialization: ${formData.specialization}\nStudent: ${formData.studentName}\nCity: ${formData.city}`
+    );
+  };
 
   return (
     <div className="app">
@@ -34,101 +34,87 @@ function App() {
       </div>
 
       <div className="container">
+        {/* Search bar */}
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="text-input"
+            name="searchQuery"
+            value={formData.searchQuery || ''}
+            onChange={handleInputChange}
+          />
+        </div>
 
-      
-      <div className="search-bar">
-  <input
-    type="text"
-    placeholder="Search..."
-    className="text-input"
-    name="searchQuery"
-    value={formData.searchQuery || ''}
-    onChange={handleInputChange}
-  />
-</div>
+        {/* Education Level */}
+        <div className="education-level-group">
+          <label className="label">Select Education Level:</label>
+          <div className="education-level-options">
+            <label>
+              <input
+                type="radio"
+                name="educationLevel"
+                value="Undergraduate"
+                checked={formData.educationLevel === 'Undergraduate'}
+                onChange={handleInputChange}
+              />
+              Undergraduate
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="educationLevel"
+                value="Postgraduate"
+                checked={formData.educationLevel === 'Postgraduate'}
+                onChange={handleInputChange}
+              />
+              Postgraduate
+            </label>
+          </div>
+        </div>
 
-
-
-    <div className="education-level-group">
-  <label className="label">Select Education Level:</label>
-  <div className="education-level-options">
-    <label>
-      <input
-        type="radio"
-        name="educationLevel"
-        value="Undergraduate"
-        checked={formData.educationLevel === 'Undergraduate'}
-        onChange={handleInputChange}
-      />
-      Undergraduate
-    </label>
-    <label>
-      <input
-        type="radio"
-        name="educationLevel"
-        value="Postgraduate"
-        checked={formData.educationLevel === 'Postgraduate'}
-        onChange={handleInputChange}
-      />
-      Postgraduate
-    </label>
-  </div>
-</div>
-   
-        {/* Course Selection */}
+        {/* Course (Stream) Selection */}
         <div className="course-selection">
-          <label className="label">
-            Select Stream { /*Admission Process*/}:
-          </label>
-          <select 
+          <label className="label">Select Stream:</label>
+          <select
             name="courseName"
             value={formData.courseName}
             onChange={handleInputChange}
             className="select-dropdown course-select"
           >
             <option value="">Select Stream</option>
-            <option value="Sports Management">Bachelors in Sports Management</option>
-            <option value="Fine Arts">Bachelors in Fine Arts</option>
-            <option value="Performing Arts">Bachelors in Performing Arts</option>
-            <option value="Management">Bachelors in Management Studies</option>
-            <option value="Science">Bachelors in Science</option>
-            <option value="Commerce">Bachelors in Commerce</option>
-            <option value="Arts">Bachelors in Arts</option>
-            <option value="Vocational">Bachelors in Vocational</option>
-            <option value="Accounting">Bachelors in International Accounting</option>
+            <option value="BSM">Bachelors in Sports Management</option>
+            <option value="BFA">Bachelors in Fine Arts</option>
+            <option value="BPA">Bachelors in Performing Arts</option>
+            <option value="BMS">Bachelors in Management Studies</option>
+            <option value="BSC">Bachelors in Science</option>
+            <option value="BCOM">Bachelors in Commerce</option>
+            <option value="BA">Bachelors in Arts</option>
+            <option value="BVOC">Bachelors in Vocational</option>
+            <option value="BIA">Bachelors in International Accounting</option>
           </select>
         </div>
 
-     {/* Specialization Dropdown */}
-<div className="specialization-group">
-  <label className="label">Select Specialization:</label>
-  <select
-    name="specialization"
-    value={formData.specialization || ''}
-    onChange={handleInputChange}
-    className="select-dropdown"
-  >
-    <option value="">Select Specialization</option>
-    <option value="IT">Information Technology</option>
-    <option value="Mechanical">Mechanical Engineering</option>
-    <option value="Civil">Civil Engineering</option>
-    <option value="Finance">Finance</option>
-    <option value="Marketing">Marketing</option>
-    <option value="Physics">Physics</option>
-    <option value="Psychology">Psychology</option>
-  </select>
-</div>
-
+        {/* Specialization Dropdown (Placeholder only) */}
+        <div className="specialization-group">
+          <label className="label">Select Specialization:</label>
+          <select
+            name="specialization"
+            value={formData.specialization || ''}
+            onChange={handleInputChange}
+            className="select-dropdown"
+          >
+            <option value="">Select Specialization</option>
+          </select>
+        </div>
 
         {/* Filter Colleges Section */}
         <div className="filter-section">
           <h2 className="section-title">Filter Colleges</h2>
-          
+
           {/* Student Name */}
           <div className="form-group">
-            <label className="label">
-              Student Name:
-            </label>
+            <label className="label">Student Name:</label>
             <input
               type="text"
               name="studentName"
@@ -139,32 +125,21 @@ function App() {
             />
           </div>
 
-          {/* City Selection */}
-<div className="form-row">
-  <div className="form-group">
-    <label className="label">
-      City:
-    </label>
-    <select
-      name="city"
-      value={formData.city}
-      onChange={handleInputChange}
-      className="select-dropdown"
-    >
-      <option value="">All</option>
-      <option value="Mumbai">Mumbai</option>
-      <option value="Pune">Pune</option>
-      <option value="Nashik">Nashik</option>
-      <option value="Nagpur">Nagpur</option>
-      <option value="Aurangabad">Aurangabad</option>
-      <option value="Kolhapur">Kolhapur</option>
-      <option value="Solapur">Solapur</option>
-      <option value="Amravati">Amravati</option>
-    </select>
-  </div>
-</div> {/* ✅ this closes form-row correctly */}
+          {/* City Dropdown (Placeholder only) */}
+          <div className="form-row">
+            <div className="form-group">
+              <label className="label">City:</label>
+              <select
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                className="select-dropdown"
+              >
+                <option value="">All</option>
+              </select>
+            </div>
+          </div>
 
-            
           {/* Submit Button */}
           <div className="submit-section">
             <button
