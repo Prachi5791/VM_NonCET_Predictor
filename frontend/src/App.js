@@ -87,13 +87,15 @@ function App() {
             className="select-dropdown course-select"
           >
             <option value="">Select Stream</option>
-            { /*<option value="BDesign">BDesign</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Medical">Medical</option> */}
-            <option value="Management">Management</option>
-            <option value="Science">Science</option>
-            <option value="Commerce">Commerce</option>
-            <option value="Arts">Arts</option>
+            <option value="Sports Management">Bachelors in Sports Management</option>
+            <option value="Fine Arts">Bachelors in Fine Arts</option>
+            <option value="Performing Arts">Bachelors in Performing Arts</option>
+            <option value="Management">Bachelors in Management Studies</option>
+            <option value="Science">Bachelors in Science</option>
+            <option value="Commerce">Bachelors in Commerce</option>
+            <option value="Arts">Bachelors in Arts</option>
+            <option value="Vocational">Bachelors in Vocational</option>
+            <option value="Accounting">Bachelors in International Accounting</option>
           </select>
         </div>
 
